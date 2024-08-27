@@ -20,8 +20,19 @@ class CustomException(HTTPException):
         return f"{self.error_code} {self.error_type}: {self.detail}"
 ```
 
-## Example:
-            try:
-                os.remove(path)
-            except CustomException:
-                raise CustomException(error_type=ErrorType.FILE_ERROR)
+## Example: 
+
+- without custom comment
+```
+try:
+    os.remove(path)
+except CustomException:
+    raise CustomException(error_type=ErrorType.FILE_ERROR)
+```
+- with custom comment
+```
+try:
+    os.remove(path)
+except CustomException:
+    raise CustomException(error_type=ErrorType.FILE_ERROR, detail=f"Could not remove file")
+
