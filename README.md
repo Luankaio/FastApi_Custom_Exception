@@ -19,3 +19,9 @@ class CustomException(HTTPException):
     def __str__(self):
         return f"{self.error_code} {self.error_type}: {self.detail}"
 ```
+
+## Example:
+            try:
+                os.remove(path)
+            except CustomException:
+                raise CustomException(error_type=ErrorType.FILE_ERROR)
